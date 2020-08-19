@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>sajjal bank</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="/css/print.css" media="print" type="text/css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/effects.css">
+</head>
+
+<body>
+
+    <header>
+        <nav id="nav" class="navbar navbar-expand-sm navbar-light">
+            <img id="brand-img" src="/images/sajjal bank.png" alt="">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+                <ul class="ml-auto navbar-nav link">
+                    <a href="/" class="nav-link" data-hover="home" ><span>home</span></a>
+                    <a href="/about" class="nav-link" data-hover="about"> <span>about</span></a>
+                    <a href="/banking" class="nav-link" data-hover="banking"> <span>banking</span></a>
+                    <!-- added code here to display log in and signup if not logged in and username nd logout if logged in -->
+                    <%if(!currentUser){ %>
+                        <a href="/login" class="nav-link" data-hover="login"><span> <i class="fa fa-lock"></i> login </span></a>
+                        <% } else { %>
+                        <a class="nav-link inactive" data-hover="<%=currentUser.username%>"> <span> <%=currentUser.username%> </span></a> 
+                        <a href="/logout" class="nav-link mr-3" data-hover="exit"><span> <small>logout</small></span> </a>
+                       <% } %>  
+                </ul>
+            </div>
+        </nav>
+    </header>
+        <!-- <div class="btn_hover">
+            <span id="btn_hover_trig" class="text-white fa fa-comments"></span>
+            <ul id="btn_hover_list">
+                <% if(currentUser === undefined){ %>
+                    <li><a href="/chat/user"><span class="fa fa-comment bg-primary text-white"></span></a></li>
+            <% }else{ %>
+                    <li><a href="/chat/<%=currentUser.role%>"><span class="fa fa-comment bg-primary text-white"></span></a></li>
+                <%}%>
+                        
+    
+            </ul>
+            
+        </div> -->
+    

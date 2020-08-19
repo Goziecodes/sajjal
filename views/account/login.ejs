@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+    <html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>sajjal banks</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/effects.css">
+</head>
+
+<body>
+
+   
+    <!-- [if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+            <header id="nav">
+                <nav id="nav" class="navbar navbar-expand-sm navbar-light">
+                    <img id="brand-img" src="/images/sajjal bank.png" alt="">
+                    <!-- <img src="/images/img.jpg" alt=""> -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+                        <ul class="ml-auto navbar-nav link">
+                                <a href="/" class="nav-link" data-hover="home" ><span>home</span></a>
+                                <a href="/about" class="nav-link" data-hover="about"> <span>about</span></a>
+                                <a href="/banking" class="nav-link" data-hover="banking"> <span>banking</span></a>
+                                <!-- added code here to display log in and signup if not logged in and username nd logout if logged in -->
+                                <%if(!currentUser){ %>
+
+                                    <% } else { %>
+                                    <a href="" class="nav-link" data-hover="logged in as <%currentUser.username%>"><small>Logged in as</small> <%=currentUser.username%></a>
+                                    <a href="/logout" class="nav-link" data-hover="logout"><span>logout</span> </a>
+                                   <% } %>  
+                                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="bg-overlay">
+        <img src="/images/bck-img.jpg" alt="">
+        <div class="overlay-caption text-white bg-transparent">
+    
+            <h1 class="res-text-lg">secure banking</h1>
+        </div>
+    </div>
+
+    <h4 class="text-center text-success"><%= success %></h4>
+    <h4 class="text-center text-danger"><%= failedlogin %></h4>
+
+<div id="std-form" class="mt-3 mb-5 mx-auto pt-3 px-4 vh-100">
+    <form action="/login" method="POST" class="text-center position-static">
+        <div class="form-group">
+            <label for="username">Username</label>  
+            <div class="row">
+                <div class="col-lg-2 col-2 pr-0">
+                    <span class="fa fa-user"></span>
+                </div>
+                <div class="col-lg-10 col-10">
+                        <input class="ml-auto form-control" type="text" name="username" id="username" placeholder="username">
+                    </div>
+                    
+                </div>      
+            
+            </div>
+            <div class="form-group">
+            <label for="password">Password</label>
+            <div class="row">
+                <div class="col-lg-2 col-2 pr-0">
+                    <span class="fa fa-lock"></span>
+                </div>
+                <div class="col-lg-10 col-10">
+                    <input class="ml-auto form-control" type="password" name="password" id="password" placeholder="password">
+                </div>
+            </div>
+            <small style="font-size:12px;"><a class="link" href="/forgot">forgot password??</a></small>                  
+        </div>
+        <div class="form-group ml-auto">
+                <small>are you a new user??<a href="/signup"> sign up here!</a></small>
+             
+            </div>
+      
+            <div class="form-group">
+                <button class="btn btn-success">login</button>
+        </div>
+    </form>
+</div>
+<%include ../partials/footer%>

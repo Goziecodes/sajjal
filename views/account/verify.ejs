@@ -1,0 +1,26 @@
+<%include ../partials/header%>
+<div id="bg-overlay">
+  <img src="/images/aboutus-img.jpg" alt="">
+  <div class="overlay-caption mt-4 text-info bg-transparent">
+
+      <h1 class="res-text-lg">about us</h1>
+      <h4 class="res-text-md">insights on who we are and what we do</h4>
+  </div>
+</div>
+<form class="container mb-5 position-static" action="/verify/<%= token %>" method="POST">
+    <h3 class="display-3 text-center text-info">Verify Your Email</h3>
+  <div class="form-group">
+    
+    <label for="secretToken" class="sr-only">Secret Token</label>
+    <input type="secretToken" id="secretToken" name="secretToken" class="form-control" <%if (token.length > 6){ %>
+    value="<%= token %>"<%}%>" required autofocus>
+  
+    <br/>
+    <div class="row justify-content-center">
+      <button class="btn btn-success" type="submit">Verify</button>
+    </div>
+    
+  </div>
+  </form>
+
+  <%include ../partials/footer%>

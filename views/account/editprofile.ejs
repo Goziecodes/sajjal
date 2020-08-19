@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>sajjal banks</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+                integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+                crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/effects.css">
+</head>
+
+<body>
+        <!-- [if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <header>
+                <nav id="nav" class="navbar navbar-expand-sm navbar-light">
+                        <img id="brand-img" src="/images/sajjal bank.png" alt="">
+                        <!-- <img src="/images/img.jpg" alt=""> -->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="ml-auto navbar-nav link">
+                                        <a href="/" class="nav-link" data-hover="home"><span>home</span></a>
+                                        <a href="/about" class="nav-link" data-hover="about"> <span>about</span></a>
+                                        <a href="/banking" class="nav-link" data-hover="banking"> <span>banking</span></a>
+                                        <!-- added code here to display log in and signup if not logged in and username nd logout if logged in -->
+                                        <%if(!currentUser){ %>
+                                        <a href="/login" class="nav-link" data-hover="login"><span> <i class="fa fa-lock"></i>
+                                                        login </span></a>
+                                        <% } else { %>
+                                        <a href="" class="nav-link" data-hover="logged in as <%currentUser.username%>"><small>Logged
+                                                        in as</small>
+                                                <%=currentUser.username%></a>
+                                        <a href="/logout" class="nav-link" data-hover="logout"><span>logout</span> </a>
+                                        <% } %>
+                                </ul>
+                        </div>
+                </nav>
+        </header>
+        <div class="btn_hover">
+                        <span id="btn_hover_trig" class="text-white fa fa-comments"></span>
+                        <ul id="btn_hover_list">
+                                        <li><a href=""><span class="fa fa-facebook bg-primary text-white"></span></a></li>
+                                        <li><a href=""><span class="bg-info fa fa-twitter"></span></a></li>
+                                        <li><a href=""><span class="bg-success fa fa-whatsapp"></span></a></li>
+                        </ul>
+                        
+                    </div>
+        <div id="bg-overlay">
+                <img src="/images/banking-img.jpg" alt="">
+                <div class="overlay-caption text-info bg-transparent">
+            
+                    <h1>welcome</h1>
+                        <h4>looking forward to serving your needs</h4>
+                </div>
+            </div>
+        <%if(flag){%>
+        <p class="text-danger text-center"> <small> e-mail already exists<a href="/login"> sign-in!</a></small></p>
+        <%}%>
+
+        <div id="std-form" class="mt-2 mb-5 pt-1 pl-2 mx-auto">
+                <form id="sgnup" action="/banking/<%=currentUser._id%>?_method=PUT" method="POST" class="position-static px-3 text-center">
+                        <h4 class="my-3">please edit your details</h4>
+                        <div class="form-group">
+                                <div class="row">
+                                        <div class="col-lg-2 col-2">
+                                                <span class="fa fa-envelope"></span>
+                                        </div>
+                                        <div class="col-lg-10 col-10">
+                                                <input id="e-mail" class="form-control" type="e-mail" name="email"
+                                                        value="<%=user.email%>">
+                                       </div>
+                                </div>
+
+                        </div>
+                        <div class="form-group">
+                                <div class="row">
+                                        <div class="col-lg-2 col-2">
+                                                <span class="fa fa-user-plus"></span>
+                                        </div>
+                                        <div class="col-lg-10 col-10">
+                                                <input id="" class="form-control" type="text" name="username"
+                                                        value="<%=user.username%>">
+                                        </div>
+                                </div>
+
+                        </div>
+                       
+                        <div class="form-group">
+                                <div class="row">
+                                        <div class="col-lg-2 col-2">
+                                        </div>
+                                <div class="col-lg-10 col-10">
+                                 <label for="exampleFormControlSelect1">Account currency:</label>
+                                <select class="form-control" id="account_currency" name="account_currency">
+                                        <option>&#8364;</option>
+                                        <option>&pound;</option>
+                                </select>  
+                                </div>     
+                                </div>   
+                        </div>
+                        <div class="form-group">
+                        <div class="row">
+                                        <div class="col-lg-2 col-2"></div>
+                        <div class="col-lg-10 col-10">
+                         <label for="exampleFormControlSelect1">Account type</label>
+                 <select class="form-control" id="account_type" name="account_type">
+                        <option>Current account</option>
+                        <option>Savings account</option>
+                </select>       
+                        </div>   
+                        </div>
+
+   
+                        </div>
+                        <div class="form-group">
+                                <button id="form-submit" class="btn btn-success" type="submit">update</button>
+                        </div>
+                </form>
+        </div>
+        <%include ../partials/footer%>

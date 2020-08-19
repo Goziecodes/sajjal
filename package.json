@@ -1,0 +1,43 @@
+{
+  "name": "sajjal-bank",
+  "version": "1.0.0",
+  "description": "muahahahahaha",
+  "main": "app.js",
+  "scripts": {
+    "start": "pm2 start app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rexrobotics/sajjal-bank.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rexrobotics/sajjal-bank/issues"
+  },
+  "homepage": "https://github.com/rexrobotics/sajjal-bank#readme",
+  "dependencies": {
+    "@pusher/chatkit-server": "^1.1.0",
+    "async": "^2.6.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.4",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.4.10",
+    "nodemailer": "^5.1.1",
+    "nodemon": "^1.18.10",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^2.2.0",
+    "uuid": "^3.3.2"
+  }
+}

@@ -1,0 +1,337 @@
+/* google fonts */
+/* body-Roboto Condensed, links-laila, headings-poppins*/
+@import url('https://fonts.googleapis.com/css?family=Laila|Poppins:200,400|Roboto+Condensed');
+/* color scheme
+headings:#ED6A5A 
+links:#328CF0
+footer:#221D23
+ash:#AAABBC
+background:#F6F7EB*/
+/* styling rules */
+
+* {
+    box-sizing: border-box !important;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    z-index:0;
+}
+ 
+/* elements */
+
+html{
+    position:relative;
+    width:100%;
+}
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 20px;
+    position:relative;
+    height:100%;
+}
+
+header{
+    position:absolute;
+    width:100%;
+    top:0px;
+    left:0px;
+    z-index: 1;
+}
+main{
+    margin-bottom:20px;
+}
+footer{
+    background:#221D23;
+    color:#AAABBC;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family:'Poppins', sans-serif;
+    text-transform: capitalize;
+    font-weight: 400;
+}
+a{
+    color:#328CF0;
+    text-transform: capitalize;
+    text-decoration: none !important;
+}
+p{
+  
+}
+form{
+    position:absolute;
+}
+
+/* ids */
+#brand-img {
+    width: 180px;
+    height: 65px;
+    display: inline-block;
+    z-index:1;
+}
+#body-img{
+    background-image: url(../images/body-img.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+#bg-overlay{
+    margin-bottom:10px;
+    z-index:-1;
+    position:relative;
+    height:220px;
+}
+#bg-overlay >img{
+    min-width:100%;
+    height:220px;
+}
+#carousel{
+    position: relative;
+    margin-bottom:10rem;
+}
+#contact-section{
+    height:120px !important;
+
+}
+#errorpg{
+    color:#328CF0;
+    transform: rotateX(-90deg);
+}
+#login-bg-img {
+    position: relative;
+    height: 20rem;
+    top:calc(10vh + 1rem);
+}
+#info_section .carousel-inner > .carousel-item > img {
+    width:640px;
+    height:320px;
+  }
+#info_section .caption-item{
+    position:relative;
+}
+#main-info {
+    background-color:rgb(93, 134, 196);
+    padding: 2em 1em;
+    height:40rem;
+}
+#std-form{
+    opacity:20%;
+    border:2px solid rgb(234,249,252);
+    border-radius:21px;
+    box-shadow:0px 10px 5px rgba(0,0,0,0.1);
+}
+#std-form input{
+    border-color:rgb(162,238,248)
+}
+#pswd_info{
+    text-align:left;
+    padding:25px 10px;
+    border-radius:20px;
+    width:220px;
+    font-size:15px;
+    position:absolute;
+    background:white;
+    top:220px;
+    left:50px;
+    border:2px solid rgba(196, 190, 190, 0.2);
+    display:none;
+}
+#pswd_info::before {
+    content: "\25B2";
+    position:absolute;
+    top:-12px;
+    left:45%;
+    font-size:14px;
+    line-height:14px;
+    color:#ddd;
+    text-shadow:none;
+    display:block;
+}
+#pswd_info li{
+    list-style:none;
+}
+#passerr{
+    display:none;
+}
+#receipt-credit{
+    margin:20px auto;  
+    background:rgba(24, 195, 230,0.7);
+    border-radius: 10px;
+}
+#receipt-debit{
+    margin:20px auto;  
+    background:rgba(247, 138, 138, 0.8);
+    border-radius: 10px;
+}
+#receipt-reverse{
+    margin:20px auto;  
+    background:rgb(150, 149, 149);
+    border-radius: 10px;
+}
+#receipt .row{
+    padding:10px;
+}
+#receipt-credit h4, #receipt-debit h4, #receipt-reverse h4{
+    font-family: Laila;
+    font-size:22px;
+    text-transform: capitalize;
+}
+#receipt-credit img, #receipt-debit img, #receipt-reverse img{
+    position:relative;
+    top:50%;
+    transform: translateY(-50%);
+    right:0px;
+    width:60px;
+    height:60px;
+    border-radius: 50%;
+}
+#trans_form{
+    border:1px solid rgb(130, 186, 250);
+    border-radius:10px;
+    position: static;
+}
+#trans_form label{
+    text-transform: capitalize;
+}
+/* classes */
+
+#carousel .carousel img{
+    height:120vh;
+    min-width:100%;
+}
+#carousel .carousel-caption{
+    top:120px;    
+    height:inherit;
+    background: rgba(234,249,252,0.01);
+}
+#carousel .carousel-caption p{
+    font-size:24px;
+    text-shadow: 2px 1px rgba(0,0,0,0.3);
+}
+#carousel .carousel-caption h1,h2{
+    font-family:'Poppins', sans-serif;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size:4rem;
+    color:white;
+    text-shadow:1px 2px #328CF0;
+}
+.overlay-caption{
+    position: absolute;
+    top:50%;
+   left:50%;
+   width:100%;
+   padding:30px;
+   transform:translate(-50%,-50%);
+    color:white;
+    text-shadow:1px 1px rgba(0,0,0,0.3);
+    font-size:32px;
+    background: rgba(0,0,0,0.3);
+}
+.shadow{  
+   box-shadow:0px 3px 55px rgba(0,0,0,0.3);
+}
+.section{
+    padding:20px;
+    font-family: 'Muli',sans-serif;
+}
+.section__title{
+    font-size: 2em;
+    color:#ec3f41;
+}
+.section__body{
+    font-size: 1em;
+    text-shadow:2px 0px white;
+}
+.section__image{
+    border-radius:50%;
+    width:20rem;
+    height:20rem;
+    margin:10px 0px;
+}
+.nav-fixed{
+    position:fixed;
+    z-index: 5;
+    top:0px;
+    width:100%;
+    background-color:#328CF0;    
+}
+
+
+.invalid {
+    padding-left:22px;
+    line-height:24px;
+    color:#ec3f41;
+}
+.valid {
+    padding-left:22px;
+    line-height:24px;
+    color:#3a7d34;
+}
+.list{
+    text-transform: capitalize;
+    font-size:22px;
+
+}
+/* responsive text class */
+.res-text-lg{
+    font-size:calc(4vw + 10px);
+}
+.res-text-md{
+    font-size:calc(2.5vw + 4px);
+}
+.res-text-sm{
+    font-size:calc(2vw + 10px);
+}
+/* for mobile screens */
+@media screen and (max-width: 520px){    
+    #carousel .carousel img{
+        height:50vh;
+        max-width:100%;
+    }
+    #elementor-row{
+        visibility: hidden; 
+      }
+    #carousel{
+        margin-bottom: 2rem;
+    }
+    #carousel .carousel-caption{
+        top:80px;
+    }
+    #carousel .button{
+        width:120px;
+
+    }
+    #carousel .button a{
+       font-size:1rem;
+        
+    }
+    #carousel .carousel-caption p{
+        font-size:16px;
+    }
+    #carousel .carousel-caption h1,h2,h3{
+        font-size:20px;
+    }
+    /* classes */
+    .nav-fixed{
+        padding:5px;
+        position:fixed;
+        z-index: 5;
+        top:0px;
+        width:100vw;
+        background-color:#328CF0;    
+    }
+    .collapse{
+        background-color:rgba(255,255,255,0.8);
+        border-radius:10px;
+        
+    }
+    .nav-fixed .collapse{
+        background-color:transparent;
+
+    }
+}
+/* fix for one sided positioning of default bootstrap row */
+.rowfix{
+    margin-right:0px !important;
+    margin-left:0px !important;
+}

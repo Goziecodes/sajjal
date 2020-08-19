@@ -1,0 +1,51 @@
+<% include ../partials/header%>
+<div id="bg-overlay">
+        <img src="/images/aboutus-img.jpg" alt="">
+        <div class="overlay-caption text-info bg-transparent">
+    
+            <h1>admin</h1>
+            <% if (Users == false){ %>
+                <h4>no users in the database</h4>
+        <% } %>
+        </div>
+    </div>
+<main class="container" style="margin-top:0px; margin-bottom:90vh">
+    
+        <h1 class="mt-5 text-center">admin page</h1>
+        
+        
+        <% Users.forEach(function(user){ %>
+            <!-- <form class="container position-static w-100 p-3 mb-5"></form> -->
+            <form class="position-static" class="container position-static w-100 p-3 mb-5">
+                   
+                <h4>username:  <%=user.username%></h4> 
+                <h5>email: <%= user.email %> </h5>
+                <h5>account type:<%=user.accountType%></h5>
+                <h5>Account Name:  <%= user.first + " " + user.last %></h5>
+                <h5>Account Number: <%= user.accountNumber %> </h5>
+                <h5>Account Balance: <%= user.accountBalance %> </h5>
+                <h5>Account Currency: <%= user.accountCurrency %> </h5>
+
+                <button action="/banking/<%=user._id%>/credit" method="POST" class="btn btn-success d-none" type="submit">credit</button>
+                    <button formaction="/admin/<%= user._id%>?_method=DELETE" formmethod="POST" class="btn btn-sm btn-danger">Delete</button>
+              
+                <%  if(user.allowed == true){ %>
+                        <button formaction="/block/<%= user._id%>?_method=PUT" formmethod="POST" class="btn btn-sm btn-warning">block</button>
+                  
+               <%    } else { %>
+                        <button class="btn btn-sm btn-success" formaction="/unblock/<%= user._id%>?_method=PUT" formmethod="POST">unblock</button>
+
+                <%   } %>
+                <a class="btn btn-sm btn-success" href="/banking/<%=user._id%>/credit"">credit</a>
+                <a class="btn btn-sm btn-warning" href="/banking/<%=user._id%>/debit"">debit</a>
+                <button formaction="/banking/<%=user._id%>/viewtransactions" formmethod="GET" class="btn btn-sm btn-danger">view transactions</button>
+                <hr>
+              
+            </form>  
+  
+<% }); %>
+
+
+</main>
+<% include ../partials/footer%>      
+

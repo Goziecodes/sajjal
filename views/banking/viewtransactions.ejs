@@ -1,0 +1,129 @@
+<% include ../partials/header%>
+
+
+<div id="bg-overlay">
+    <img src="/images/banking-img.jpg" alt="">
+    <div class="overlay-caption text-info bg-transparent">
+
+        
+
+        <% if (User.transaction == false ){ %>
+            <p class="text-center mt-3">no transactions in the database</p>
+    <% } %>
+    </div>
+</div>
+
+
+
+<% var Trans = User.transaction.reverse()%>
+<%Trans.forEach(function(users){ %>
+
+    <% if(users.transaction_type==="debit" && !users.reverse){ %>
+        <div id="receipt-debit" class="container print p-3">
+            
+        <%}else if(users.transaction_type==="credit" && !users.reverse){%>
+            <div id="receipt-credit" class="container print p-3">
+        <%}else if(users.reverse){%>
+            <div id="receipt-reverse" class="container print p-3">
+                <p class="text-center text-danger">This transaction has been reversed</p>
+            <%}%>
+      
+                <div class="row rowfix">
+                        <div class="col-lg-8 col-12">
+                            <% if(users.transaction_type==="debit"){ %>
+                                <h4>Account name:<%= User.first + " " + User.last%> </h4>
+                                <h4>email:<%= User.email %> </h4>
+                            <%}else if(users.transaction_type==="credit"){%>
+                                <h4>account number:<%=users.account_number%></h4>
+                            <%}%>
+                            
+                            
+                        </div>
+                    <div class="col-lg-4 col-12 text-lg-right">
+                        <h4>date:<%=users.date%></h4>
+                    </div>            
+                </div>
+                <div class="row rowfix">
+                    <div class="col-lg-6 col-12">
+                            <%if(users.transaction_type==="debit"){%>
+                            <h4>Recipient name:<%=users.recipient_name%></h4>
+                            <h4>account number:<%=users.account_number%></h4>
+                            <%}else if(users.transaction_type==="credit"){%>
+                                <h4>Depositors name:<%=users.depositor_name%></h4>
+                            <%}%>
+                           
+                    </div>
+                    <div class="col-lg-6 col-12 text-lg-right">
+                            <%if(users.transaction_type==="debit"){%>
+                                <h4>Recipient bank:<%=users.recipient_bank%></h4>
+                                <%}else if(users.transaction_type==="credit"){%>
+                                    
+                                <%}%>
+                            
+                            <h4>bank address:  <%=users.bank_address%></h4>
+                    </div>
+                </div>
+                <div class="row d-relative rowfix">
+
+                    <div class="col-lg-8 col-12">
+                            <%if(users.transaction_type==="debit"){%>
+                            <h4>Debit amount:<%=users.transaction_amount%></h4>
+                            <%}else if(users.transaction_type==="credit"){%>
+                                <h4>credit amount:<%=users.transaction_amount%></h4>
+                                <%}%>
+                            <h4>details:<%=users.details%></h4>
+                    </div>
+                    <div class="col-lg-4 col-12 text-right">
+                        <img class="img-thumbnail" src="/images/Sajjal Bank 2 PNG.png" alt="">
+                    </div>
+                </div>
+                <%if(users.transaction_type==="debit"){%>
+                <div class="row d-relative rowfix">
+                        <div class="col-lg-8 col-12">
+                                <h4>Routing:<%=users.routing%></h4>
+                                <h4>Swift code:<%=users.swift%></h4>
+                                <h4>tax:<%=users.tax%></h4>  
+                                <h4>total:<%=users.total%></h4>
+                               
+                        </div>  
+                        
+                    </div>
+                    <%}else if(users.transaction_type==="credit"){%>
+                        <div class="row d-relative rowfix">
+                                <div class="col-lg-8 col-12">
+                                        <h4 class="text-left">current Balance:<%=User.accountBalance%></h4>                
+                                </div>
+                                
+                            </div>
+                      
+                        <%}%>
+                
+                <div class="text-center form-group">
+                    <button class="mx-auto btn btn-info" onclick="window.print();return false;">print</button>
+                </div>
+                <div class="text-center">
+                <%if(currentUser.role === 'admin'){ %>                    
+                    <form class="d-flex form-group justify-content-center position-static" action="/banking/admin/<%=users._id%>/reverse?_method=PUT" method="POST">
+                   
+                            <button class="btn btn-dark nav-link">Reverse transaction</button>
+                        
+                        
+                </form>
+                    <p class="nav-item">
+                    <a class="btn d-inline-block btn-warning nav-link" href="/banking/admin/<%=users._id%>">Edit transaction</a></p> 
+                    <% } %>
+                </div>
+                
+       
+        
+           
+       
+    </div>
+<% })%>
+
+
+
+
+
+<% include ../partials/footer%>
+

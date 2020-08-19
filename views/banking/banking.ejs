@@ -1,0 +1,115 @@
+<%include ../partials/header%>
+
+
+<div id="bg-overlay">
+    <img src="/images/aboutus-img.jpg" alt="">
+    <div class="overlay-caption mt-4 text-info bg-transparent">
+
+        <h1 class="res-text-lg">bank with us</h1>
+        <h4 class="res-text-md">with different options based on your need</h4>
+    </div>
+</div>
+
+<h4 class="text-center text-success"><%= success %></h4> 
+<h4 class="text-center text-success"><%= error %></h4>
+<%if(!currentUser){ %>
+
+    <% } else { %>
+     <nav class="navbar navbar-expand-md bg-light">
+         <ul class="mx-auto navbar-nav">
+                <%if(currentUser.role === 'admin'){ %>                    
+                <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li> 
+                <% } %>
+             <li class="nav-item"> <a href="/banking/<%=currentUser._id%>/transaction" class="nav-link">make transaction</a></li>
+             <li class="nav-item"> <a href="/banking/<%=currentUser._id%>/viewtransactions" class="nav-link">view transactions</a></li>
+             <li class="nav-item"><a href="/banking/<%=currentUser._id%>/editprofile" class="nav-link">Edit profile </a></li>
+              
+            
+         </ul>
+
+     </nav>
+ <nav class="navbar navbar-expand-md bg-light">
+         <ul class="mx-auto navbar-nav text-info">
+				<li class="nav-item"><a class="nav-link"><small>Hello! <%=currentUser.first%> <%=currentUser.last%></small></a></li>
+				<li class="nav-item"><a class="nav-link"><small>Balance:<%=currentUser.accountCurrency%><%=currentUser.accountBalance%></small></a></li>
+              		<li class="nav-item"><a class="nav-link"><small>Account number:<%=currentUser.accountNumber%></small></a></li>
+                      
+
+	   </ul>
+     </nav>
+
+    <% } %>  
+    <main>
+        <section id="login-bg-img">
+                <div class="text-center text-info bg-transparent">
+                    <h1 class="res-text-lg">your success is our business</h1>
+                    <p class="">We’ve got the global network, deep expertise and innovative vision to meet
+                        all your banking needs and more</p>
+                        <%if(!currentUser){ %>
+                            <a class="btn btn-success btn_1" href="/login">
+                                <span class="btn1_content">Login</span></a>
+                           <% } else { %>
+                            <a class="btn btn-success" href="/logout">logout</a>
+                           <% } %> 
+                </div>
+        
+        </section>
+        <section class="row rowfix container-fluid mt-3">
+ <div class="col-lg-6 section text-center d-sm-none d-md-block">
+                <img class="section__image" src="/images/market-img.jpg" alt="">
+           </div>
+           <div class="col-lg-6 section text-info text-center mt-lg-0 mt-2">
+                <h4 class="section__title">our global network</h4>
+                <p class="section__body">we operate in over 60 markets, with secure,
+                     purpose driven strategies to achieve profit and provide loans to SME's 
+                     and mid level companies</p>                
+                    <a class="btn btn-success" href="/banking/g-network">learn more</a>
+           </div>
+          
+        </section>
+        <section class="row rowfix container-fluid mt-3 text-center">
+                <div class="col-lg-6 section">
+                        <img class="section__image" src="/images/individual-img.jpg" alt="">
+                </div>
+            <div class="col-lg-6 section text-info mt-lg-0 mt-2">
+                 <h4 class="section__title">individual banking</h4>
+                 <p class="section__body">
+                    From Personal Banking with a full range of solutions to meet your 
+                    evolving financial needs, 
+                    to Priority Banking and Private Banking that help you grow and manage your wealth, 
+                    for now and into the future.</p>
+                    <a class="btn btn-success" href="/banking/individual">learn more</a>
+            </div>
+           
+         </section>
+         <section class="row rowfix container-fluid mt-3">
+ <div class="col-lg-6 section text-center">
+                     <img class="section__image" src="/images/company-img.jpg" alt="">
+                </div>
+                <div class="col-lg-6 section text-info text-center mt-lg-0 mt-2">
+                     <h4 class="section__title">banking for companies</h4>
+                     <p class="section__body">
+                            We offer a diverse range of products and services for companies of all sizes,
+                             from small start-ups to vast multinational corporations and institutions. 
+                             Thanks to our deep-rooted global network, we combine local expertise with the global insights you need in today’s fastest-growing markets.
+                             Whatever you need to build and grow your business, we can help.
+                     </p>                     
+                    <a class="btn btn-success" href="/banking/company">learn more</a>
+                </div>
+               
+             </section>
+        
+    </main>
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5cc1b1bcd6e05b735b4442f2/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+   
+<%include ../partials/footer%>

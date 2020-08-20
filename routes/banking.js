@@ -2,6 +2,7 @@ var express = require("express"),
 router = express.Router(),
 passport = require("passport"),
 User = require("../models/user"),
+Transaction = require('../models/transaction')
 dummyTrans = require("../models/dummyTrans"),
 Zeus            = require("../models/zeus"),
 crypto = require("crypto"),

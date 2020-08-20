@@ -335,3 +335,10 @@ form{
     margin-right:0px !important;
     margin-left:0px !important;
 }
+.myGrid{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+}

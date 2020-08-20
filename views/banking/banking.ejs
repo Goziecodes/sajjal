@@ -16,20 +16,20 @@
 
     <% } else { %>
      <nav class="navbar navbar-expand-md bg-light">
-         <ul class="mx-auto navbar-nav">
+         <ul class="mx-auto navbar-nav myGrid">
                 <%if(currentUser.role === 'admin'){ %>                    
                 <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li> 
                 <% } %>
+             <li class="nav-item"><a href="/banking/<%=currentUser._id%>/editprofile" class="nav-link">Edit profile </a></li>
              <li class="nav-item"> <a href="/banking/<%=currentUser._id%>/transaction" class="nav-link">make transaction</a></li>
              <li class="nav-item"> <a href="/banking/<%=currentUser._id%>/viewtransactions" class="nav-link">view transactions</a></li>
-             <li class="nav-item"><a href="/banking/<%=currentUser._id%>/editprofile" class="nav-link">Edit profile </a></li>
-              
+
             
          </ul>
 
      </nav>
- <nav class="navbar navbar-expand-md bg-light">
-         <ul class="mx-auto navbar-nav text-info">
+ <nav class="navbar navbar-expand-md bg-light ">
+         <ul class="mx-auto navbar-nav text-info myGrid">
 				<li class="nav-item"><a class="nav-link"><small>Hello! <%=currentUser.first%> <%=currentUser.last%></small></a></li>
 				<li class="nav-item"><a class="nav-link"><small>Balance:<%=currentUser.accountCurrency%><%=currentUser.accountBalance%></small></a></li>
               		<li class="nav-item"><a class="nav-link"><small>Account number:<%=currentUser.accountNumber%></small></a></li>

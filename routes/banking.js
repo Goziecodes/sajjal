@@ -443,6 +443,91 @@ router.post("/banking/:id/debit", middleware.checkIfAdmin, function(req, res){
    
   })
 });
+
+router.get("/banking/:id/debitAtm", middleware.checkIfAdmin, function(req, res){
+  User.findById(req.params.id, function(err, foundUser){
+    console.log(foundUser.username);
+    if(err){
+      console.log(err);
+      return res.redirect("/");
+    }
+    res.render("banking/debitAtm", {user:foundUser});
+  })
+});
+
+router.post("/banking/:id/debitAtm", middleware.checkIfAdmin, function(req, res){
+  console.log("i just entered admin debit route")
+  User.findById(req.params.id, function(err, foundUser){
+    console.log(foundUser.username);
+    if(err){
+      console.log(err);
+      return res.redirect("/");
+    }
+    console.log(foundUser.accountBalance)
+    Transaction.create(req.body.trans, function(err, trans){
+      console.log("about to create transaction...")
+      if (err){
+        console.log(err);
+        return res.redirect("back");
+      }
+      // console.log("created..." +trans)
+      trans.owner.id = foundUser._id;
+      trans.owner.username = foundUser.username;
+      trans.transaction_type = "Atm Debit";
+      trans.save();
+      console.log("created..." +trans)
+      foundUser.transaction.push(trans);
+      foundUser.accountBalance -= trans.total;
+      foundUser.save();
+      console.log(foundUser.transaction);
+      var accountNumber = trans.transaction_amount.toString();
+      var accountNumberfirst = trans.account_number.toString().slice(0,3);
+      var accountNumberlast = trans.account_number.toString().slice(7,10);
+
+      var smtpTransport = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          type: "oauth2",
+          user: 'michaelsanderson962@gmail.com',
+          clientId: "484139813145-kkl1a9a5sbee2vg9478o1v0ash8n74rd.apps.googleusercontent.com",
+          clientSecret:   "wV4XWx63gQYxJ11HLwlnkEOF",
+          refreshToken:   "1//04A2vtSgVmaLeCgYIARAAGAQSNwF-L9IrU8WVbyOkdCyu0yV8RncXzxjyOj_JuIh4ApM7Ay1Zny2VdhYSekqxptoq_MR-kFhOepc"
+        }
+      });
+
+      var mailOptions = {
+        to: foundUser.email,
+        from: 'support@SajjalBank.com',
+        subject: 'Transaction Details',
+        text: 'Debit Alert\n\n' +
+          'Account holders name: '  + foundUser.first+" "+ foundUser.last  + ' .\n' +
+          'Recipient: ' + trans.recipient_name  + ' .\n' +
+          'Recipient Account number: ' + accountNumberfirst + '*****'+ accountNumberlast +' .\n' +
+          'Bank Address: ' + trans.bank_address  + ' .\n' +
+          'Amount: ' + trans.transaction_amount  + ' .\n' +
+          'routing: ' + trans.routing  + ' .\n' +
+          'Swift: ' + trans.swift  + ' .\n' +
+          'Date: ' + trans.date  + ' .\n' +
+          'Details: ' + trans.details  + ' .\n' +
+          'Tax: ' + trans.tax  + ' .\n' +
+          'Total: ' + trans.total  + ' .\n' +
+          'Transaction Type: ' + "Atm Debit"  + ' .\n' +
+          'Account Balance: ' + foundUser.accountBalance  + ' .\n'
+      };
+      smtpTransport.sendMail(mailOptions, function(err) {
+        req.flash('success', 'Success! Your password has been changed.');
+        done(err);
+        console.log("mail sent");
+      });
+    })
+
+
+    res.redirect("/admin");
+
+  })
+});
+
+
 router.get("*", function(req, res){
     // err.statusCode = 404;
     // err.shouldRedirect =  true;

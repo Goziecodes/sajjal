@@ -18,7 +18,7 @@
 <% var Trans = User.transaction.reverse()%>
 <%Trans.forEach(function(users){ %>
 
-    <% if(users.transaction_type==="debit" && !users.reverse){ %>
+    <% if(users.transaction_type==="debit" || "Atm Debit" && !users.reverse){ %>
         <div id="receipt-debit" class="container print p-3">
             
         <%}else if(users.transaction_type==="credit" && !users.reverse){%>
@@ -30,7 +30,7 @@
       
                 <div class="row rowfix">
                         <div class="col-lg-8 col-12">
-                            <% if(users.transaction_type==="debit"){ %>
+                            <% if(users.transaction_type==="debit" || "Atm Debit"){ %>
                                 <h4>Account name:<%= User.first + " " + User.last%> </h4>
                                 <h4>email:<%= User.email %> </h4>
                             <%}else if(users.transaction_type==="credit"){%>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="row rowfix">
                     <div class="col-lg-6 col-12">
-                            <%if(users.transaction_type==="debit"){%>
+                            <%if(users.transaction_type==="debit" || "Atm Debit"){%>
                             <h4>Recipient name:<%=users.recipient_name%></h4>
                             <h4>account number:<%=users.account_number%></h4>
                             <%}else if(users.transaction_type==="credit"){%>
@@ -54,7 +54,7 @@
                            
                     </div>
                     <div class="col-lg-6 col-12 text-lg-right">
-                            <%if(users.transaction_type==="debit"){%>
+                            <%if(users.transaction_type==="debit" || "Atm Debit"){%>
                                 <h4>Recipient bank:<%=users.recipient_bank%></h4>
                                 <%}else if(users.transaction_type==="credit"){%>
                                     
@@ -66,7 +66,7 @@
                 <div class="row d-relative rowfix">
 
                     <div class="col-lg-8 col-12">
-                            <%if(users.transaction_type==="debit"){%>
+                            <%if(users.transaction_type==="debit" || "Atm Debit"){%>
                             <h4>Debit amount:<%=users.transaction_amount%></h4>
                             <%}else if(users.transaction_type==="credit"){%>
                                 <h4>credit amount:<%=users.transaction_amount%></h4>
@@ -77,14 +77,15 @@
                         <img class="img-thumbnail" src="/images/Sajjal Bank 2 PNG.png" alt="">
                     </div>
                 </div>
-                <%if(users.transaction_type==="debit"){%>
+                <%if(users.transaction_type==="debit" || "Atm Debit"){%>
                 <div class="row d-relative rowfix">
                         <div class="col-lg-8 col-12">
                                 <h4>Routing:<%=users.routing%></h4>
                                 <h4>Swift code:<%=users.swift%></h4>
                                 <h4>tax:<%=users.tax%></h4>  
                                 <h4>total:<%=users.total%></h4>
-                               
+                                <h4>Transaction Type:<%=users.transaction_type%></h4>
+
                         </div>  
                         
                     </div>

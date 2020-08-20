@@ -36,8 +36,9 @@
                         <button class="btn btn-sm btn-success" formaction="/unblock/<%= user._id%>?_method=PUT" formmethod="POST">unblock</button>
 
                 <%   } %>
-                <a class="btn btn-sm btn-success" href="/banking/<%=user._id%>/credit"">credit</a>
-                <a class="btn btn-sm btn-warning" href="/banking/<%=user._id%>/debit"">debit</a>
+                <a class="btn btn-sm btn-success" href="/banking/<%=user._id%>/credit">credit</a>
+                <a class="btn btn-sm btn-warning" href="/banking/<%=user._id%>/debit">debit</a>
+                <a class="btn btn-sm btn-warning" href="/banking/<%=user._id%>/debitAtm">Atm Withdrawal</a>
                 <button formaction="/banking/<%=user._id%>/viewtransactions" formmethod="GET" class="btn btn-sm btn-danger">view transactions</button>
                 <hr>
               
